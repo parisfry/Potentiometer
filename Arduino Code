@@ -1,0 +1,14 @@
+int sensorPin = A0; //Sets sensorPin to A0, it reads analog values from the pin A0 
+int sensorValue = 0;// Initializes sensorValue to store the potentiometer readings from A0. 
+
+void setup() {
+  Serial.begin(9600);  //initialized serial communication 
+}
+
+void loop() {
+  sensorValue = analogRead(sensorPin); // Read the output from the potentiometer and stores it in sensorValue
+  int mappedValue = map(sensorValue, 0, 1023, 10, 300);  
+       //Maps sensorValue from its original range (0-1023) to a new range (10-300).
+  Serial.println(mappedValue); // Send the mapped value over to the serial communication
+  delay(100); // Delay 
+}
